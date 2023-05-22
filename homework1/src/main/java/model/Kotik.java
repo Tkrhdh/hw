@@ -48,36 +48,40 @@ public class Kotik {
 
 
 
-    public void sleep() {
+    public boolean sleep() {
         if (enoughFood()) {
             System.out.println("sleep");
             satiety--;
         }
+        return false;
 
 
     }
 
-    public void play() {
+    public boolean play() {
         if (enoughFood()) {
             System.out.println("play");
             satiety--;
         }
+        return false;
 
     }
 
-    public void chaseMouse() {
+    public boolean chaseMouse() {
         if (enoughFood()) {
             System.out.println("chaseMouse");
             satiety--;
         }
+        return false;
 
     }
 
-    public void jump() {
+    public boolean jump() {
         if (enoughFood()) {
             System.out.println("jump");
             satiety--;
         }
+        return false;
 
     }
 
@@ -90,6 +94,7 @@ public class Kotik {
     }
 
     public void eat() {
+        System.out.println("Вызван метод eat");
         eat(1, "Purina");
     }
 
@@ -103,16 +108,17 @@ public class Kotik {
         };
         for (int i = 0; i < 24; i++) {
             int m = new Random().nextInt(methods.length);
-            methods[m].invoke(this);
+            Boolean needToEat = (Boolean) methods[m].invoke(this);
+            if (needToEat){
+                this.eat();
+            }
         }
 
     }
 
     private boolean enoughFood() {
         if (satiety <= 0) {
-            System.out.println("Покорми меня !!!");
             this.eat();
-            System.out.println("Покормила - текущее число еды :" + satiety);
             return false;
         }
         return true;
