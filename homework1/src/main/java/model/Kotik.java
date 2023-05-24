@@ -26,8 +26,8 @@ public class Kotik {
         this.satiety = satiety;
         this.name = name;
         kotikCount++;
-        System.out.println("Создан котик с именем " + name);
-        System.out.println("Текущее число котиков " + kotikCount);
+        System.out.print("Создан котик с именем " + name);
+        System.out.println(",текущее число котиков " + kotikCount);
     }
 
     public static int getkotikCount() {
@@ -89,12 +89,12 @@ public class Kotik {
     }
 
     public void eat(int a, String foodName) {
-        System.out.println("Получено " + a + " единиц еды : " + "вида " + foodName);
+        System.out.println(" - получено " + a + " единица еды : " + foodName);
         satiety += a;
     }
 
     public void eat() {
-        System.out.println("Вызван метод eat");
+        System.out.print("Вызван метод eat");
         eat(1, "Purina");
     }
 
