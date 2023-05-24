@@ -22,15 +22,20 @@ public class Kotik {
         kotikCount++;
     }
 
-    public Kotik(int satiety, String name) {
+    public Kotik(int satiety, String name, int weight) {
         this.satiety = satiety;
         this.name = name;
+        this.weight = weight;
         kotikCount++;
         System.out.print("Создан котик с именем " + name);
         System.out.println(",текущее число котиков " + kotikCount);
     }
 
     public static int getkotikCount() {
+        return kotikCount;
+    }
+
+    public static Integer getKotikCount() {
         return kotikCount;
     }
 
@@ -42,90 +47,71 @@ public class Kotik {
 
     }
 
-    public void setMeow(String meow) {
-        this.meow = meow;
-    }
-
-
     public boolean sleep() {
-        if (enoughFood()) {
+        if (satiety >= 0) {
             System.out.println("sleep");
+            satiety--;
+            return true;
         }
         return false;
-
-
     }
 
     public boolean play() {
-        if (enoughFood()) {
+        if (satiety >= 0) {
             System.out.println("play");
             satiety--;
+            return true;
         }
         return false;
 
     }
 
     public boolean chaseMouse() {
-        if (enoughFood()) {
+        if (satiety >= 0) {
             System.out.println("chaseMouse");
             satiety--;
+            return true;
         }
         return false;
 
     }
 
     public boolean jump() {
-        if (enoughFood()) {
+        if (satiety >= 0) {
             System.out.println("jump");
             satiety--;
+            return true;
         }
         return false;
 
     }
 
     public void eat(int a) {
-        satiety += a;
+        eat(a, "Wiskas");
     }
 
     public void eat(int a, String foodName) {
-        System.out.println(" - получено " + a + " единица еды : " + foodName);
+        System.out.print("Вызван метод eat");
+        System.out.println(" - получено " + a + " единиц еды : " + foodName);
         satiety += a;
     }
 
     public void eat() {
-        System.out.print("Вызван метод eat");
         eat(1, "Purina");
     }
 
     public void liveAnotherDay() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
-        Method[] methods = {
-                Kotik.class.getMethod("sleep"),
-                Kotik.class.getMethod("play"),
-                Kotik.class.getMethod("chaseMouse"),
-                Kotik.class.getMethod("jump"),
-        };
+        Method[] methods = {Kotik.class.getMethod("sleep"), Kotik.class.getMethod("play"), Kotik.class.getMethod("chaseMouse"), Kotik.class.getMethod("jump"),};
         for (int i = 0; i < 24; i++) {
+            int x = i+1;
+            System.out.print(x+" ");
             int m = new Random().nextInt(methods.length);
             Boolean needToEat = (Boolean) methods[m].invoke(this);
-            if (needToEat) {
-                this.eat();
+            if (!needToEat) {
+                this.eat((int) (Math.random() * 4 + 1));
             }
         }
-
-    }
-
-    private boolean enoughFood() {
-        if (satiety <= 0) {
-            this.eat();
-            return false;
-        }
-        return true;
-    }
-
-
-    public static Integer getKotikCount() {
-        return kotikCount;
     }
 
     public int getSatiety() {
@@ -146,5 +132,9 @@ public class Kotik {
 
     public String getMeow() {
         return meow;
+    }
+
+    public void setMeow(String meow) {
+        this.meow = meow;
     }
 }
