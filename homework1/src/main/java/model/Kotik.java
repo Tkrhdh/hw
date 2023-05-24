@@ -19,6 +19,7 @@ public class Kotik {
     private String meow;
 
     public Kotik() {
+        kotikCount++;
     }
 
     public Kotik(int satiety, String name) {

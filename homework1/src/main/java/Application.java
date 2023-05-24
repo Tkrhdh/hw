@@ -11,7 +11,7 @@ public class Application {
         System.out.println("barsik weight : "+ barsik.getWeight());
         barsik.setMeow("Мяу Мяу");
 
-        Kotik kitty = new Kotik(6, "Ruby");
+        Kotik kitty = new Kotik();
         kitty.setKotik(10, "Ruby",2, "Мяу" );
         kitty.setMeow("Мяу");
         System.out.println("kitty name : "+ kitty.getName());
