@@ -50,7 +50,6 @@ public class Kotik {
     public boolean sleep() {
         if (enoughFood()) {
             System.out.println("sleep");
-            satiety--;
         }
         return false;
 
