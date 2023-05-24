@@ -4,13 +4,14 @@ import java.lang.reflect.InvocationTargetException;
 
 public class Application {
     public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
-        Kotik barsik = new Kotik(5, "Barsik", 3);
+        Kotik barsik = new Kotik(5, "Barsik");
+        barsik.setKotik(9,"Barsik", 3, "Мяу Мяу" );
         barsik.liveAnotherDay();
         System.out.println("barsik name : "+ barsik.getName() );
         System.out.println("barsik weight : "+ barsik.getWeight());
         barsik.setMeow("Мяу Мяу");
 
-        Kotik kitty = new Kotik();
+        Kotik kitty = new Kotik(6, "Ruby");
         kitty.setKotik(10, "Ruby",2, "Мяу" );
         kitty.setMeow("Мяу");
         System.out.println("kitty name : "+ kitty.getName());

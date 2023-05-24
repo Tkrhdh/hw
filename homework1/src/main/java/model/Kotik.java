@@ -21,12 +21,11 @@ public class Kotik {
     public Kotik() {
     }
 
-    public Kotik(int satiety, String name, Integer weight) {
+    public Kotik(int satiety, String name) {
         this.satiety = satiety;
         this.name = name;
-        this.weight = weight;
         kotikCount++;
-        System.out.println("Создан котик с именем "+name);
+        System.out.println("Создан котик с именем " + name);
         System.out.println("Текущее число котиков " + kotikCount);
     }
 
@@ -34,7 +33,7 @@ public class Kotik {
         return kotikCount;
     }
 
-    public void setKotik(int prettiness, String name, int weight, String meow){
+    public void setKotik(int prettiness, String name, int weight, String meow) {
         this.prettiness = prettiness;
         this.name = name;
         this.weight = weight;
@@ -42,10 +41,9 @@ public class Kotik {
 
     }
 
-    public void setMeow (String meow) {
+    public void setMeow(String meow) {
         this.meow = meow;
     }
-
 
 
     public boolean sleep() {
@@ -90,6 +88,7 @@ public class Kotik {
     }
 
     public void eat(int a, String foodName) {
+        System.out.println("Получено " + a + " единиц еды : " + "вида " + foodName);
         satiety += a;
     }
 
@@ -109,7 +108,7 @@ public class Kotik {
         for (int i = 0; i < 24; i++) {
             int m = new Random().nextInt(methods.length);
             Boolean needToEat = (Boolean) methods[m].invoke(this);
-            if (needToEat){
+            if (needToEat) {
                 this.eat();
             }
         }
