@@ -5,23 +5,18 @@ import java.lang.reflect.Method;
 import java.util.Random;
 
 public class Kotik {
-
     private static Integer kotikCount = 0;
-
     private int satiety;
-
     private String name;
-
     private Integer weight;
-
     private Integer prettiness;
-
     private String meow;
 
     public Kotik() {
         kotikCount++;
+        System.out.print("Создан котик без имени");
+        System.out.println(", текущее число котиков " + kotikCount);
     }
-
     public Kotik(int satiety, String name, int weight) {
         this.satiety = satiety;
         this.name = name;
@@ -44,7 +39,6 @@ public class Kotik {
         this.name = name;
         this.weight = weight;
         this.meow = meow;
-
     }
 
     public boolean sleep() {
